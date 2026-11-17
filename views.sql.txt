@@ -1,0 +1,42 @@
+CREATE VIEW vw_category_avg_price AS
+SELECT
+    category,
+    COUNT(book_id) AS total_books,
+    AVG(price) AS average_price
+FROM Books
+GROUP BY category;
+
+
+CREATE VIEW vw_book_author AS
+SELECT
+    b.book_id,
+    b.book_title,
+    a.author_name,
+    b.category,
+    b.price
+FROM Books b
+JOIN Authors a
+ON b.author_id = a.author_id;
+
+
+CREATE VIEW vw_book_availability AS
+SELECT
+    book_id,
+    book_title,
+    total_copies,
+    available_copies,
+    IF(
+        available_copies > 0,
+        'Available',
+        'Out of Stock'
+    ) AS availability_status
+FROM Books;
+
+
+CREATE VIEW vw_fine_payment_summary AS
+SELECT
+    payment_status,
+    COUNT(fine_id) AS total_fines,
+    SUM(fine_amount) AS total_amount
+FROM Fines
+GROUP BY payment_status;

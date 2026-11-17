@@ -1,0 +1,71 @@
+INSERT INTO Authors
+(author_id, author_name, country, date_of_birth)
+VALUES
+(1, 'R.K. Narayan', 'India', '1906-10-10'),
+(2, 'Chetan Bhagat', 'India', '1974-04-22'),
+(3, 'J.K. Rowling', 'UK', '1965-07-31'),
+(4, 'William Shakespeare', 'England', '1564-04-26'),
+(5, 'George Orwell', 'UK', '1903-06-25'),
+(6, 'Paulo Coelho', 'Brazil', '1947-08-24'),
+(7, 'Jane Austen', 'England', '1775-12-16'),
+(8, 'Rabindranath Tagore', 'India', '1861-05-07'),
+(9, 'Dan Brown', 'USA', '1964-06-22'),
+(10, 'A.P.J. Abdul Kalam', 'India', '1931-10-15');
+
+INSERT INTO Books
+(book_id, book_title, author_id, category, price,
+total_copies, available_copies)
+VALUES
+(101, 'Malgudi Days', 1, 'Fiction', 350, 10, 8),
+(102, 'Five Point Someone', 2, 'Fiction', 280, 12, 9),
+(103, 'Harry Potter', 3, 'Fantasy', 500, 15, 12),
+(104, 'Hamlet', 4, 'Drama', 300, 8, 6),
+(105, 'Animal Farm', 5, 'Political Fiction', 250, 10, 7),
+(106, 'The Alchemist', 6, 'Philosophy', 400, 12, 10),
+(107, 'Pride and Prejudice', 7, 'Romance', 320, 9, 7),
+(108, 'Gitanjali', 8, 'Poetry', 200, 10, 8),
+(109, 'The Da Vinci Code', 9, 'Thriller', 450, 14, 11),
+(110, 'Wings of Fire', 10, 'Biography', 350, 15, 12);
+
+INSERT INTO Members
+(member_id, member_name, email, phone, city, membership_date)
+VALUES
+(201, 'Rahul Sharma', 'rahul@gmail.com', '9876543210', 'Hyderabad', '2025-01-10'),
+(202, 'Priya Reddy', 'priya@gmail.com', '9876543211', 'Vijayawada', '2025-02-15'),
+(203, 'Arjun Kumar', 'arjun@gmail.com', '9876543212', 'Chennai', '2025-03-20'),
+(204, 'Sneha Rao', 'sneha@gmail.com', '9876543213', 'Bangalore', '2025-04-05'),
+(205, 'Kiran Patel', 'kiran@gmail.com', '9876543214', 'Mumbai', '2025-05-12'),
+(206, 'Divya Sharma', 'divya@gmail.com', '9876543215', 'Hyderabad', '2025-06-18'),
+(207, 'Rohit Verma', 'rohit@gmail.com', '9876543216', 'Delhi', '2025-07-22'),
+(208, 'Ananya Das', 'ananya@gmail.com', '9876543217', 'Kolkata', '2025-08-09'),
+(209, 'Vikram Singh', 'vikram@gmail.com', '9876543218', 'Pune', '2025-09-14'),
+(210, 'Meena Lakshmi', 'meena@gmail.com', '9876543219', 'Guntur', '2025-10-25');
+
+INSERT INTO Borrowings
+(borrowing_id, book_id, member_id, borrow_date, due_date,
+return_date, borrowing_status)
+VALUES
+(301, 101, 201, '2026-01-01', '2026-01-15', '2026-01-12', 'Returned'),
+(302, 102, 202, '2026-01-05', '2026-01-19', '2026-01-22', 'Returned'),
+(303, 103, 203, '2026-01-10', '2026-01-24', NULL, 'Borrowed'),
+(304, 104, 204, '2026-01-12', '2026-01-26', '2026-01-25', 'Returned'),
+(305, 105, 205, '2026-01-15', '2026-01-29', NULL, 'Borrowed'),
+(306, 106, 201, '2026-01-18', '2026-02-01', '2026-02-05', 'Returned'),
+(307, 107, 206, '2026-01-20', '2026-02-03', NULL, 'Borrowed'),
+(308, 108, 207, '2026-01-22', '2026-02-05', '2026-02-04', 'Returned'),
+(309, 109, 208, '2026-01-25', '2026-02-08', NULL, 'Borrowed'),
+(310, 110, 209, '2026-01-28', '2026-02-11', '2026-02-15', 'Returned');
+
+INSERT INTO Fines
+(fine_id, borrowing_id, fine_amount, fine_date, payment_status)
+VALUES
+(401, 301, 0.00, '2026-01-12', 'Paid'),
+(402, 302, 15.00, '2026-01-22', 'Paid'),
+(403, 303, 0.00, '2026-01-24', 'Unpaid'),
+(404, 304, 0.00, '2026-01-25', 'Paid'),
+(405, 305, 0.00, '2026-01-29', 'Unpaid'),
+(406, 306, 20.00, '2026-02-05', 'Unpaid'),
+(407, 307, 0.00, '2026-02-03', 'Unpaid'),
+(408, 308, 0.00, '2026-02-04', 'Paid'),
+(409, 309, 0.00, '2026-02-08', 'Unpaid'),
+(410, 310, 20.00, '2026-02-15', 'Paid');

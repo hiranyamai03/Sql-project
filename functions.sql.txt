@@ -1,0 +1,29 @@
+SELECT
+    category,
+    AVG(price) AS average_price
+FROM Books
+GROUP BY category
+HAVING AVG(price) > 300;
+
+SELECT
+    book_title,
+    SUBSTRING(book_title, 1, 5) AS short_title
+FROM Books;
+
+SELECT
+    member_name,
+    YEAR(membership_date) AS joining_year
+FROM Members;
+
+SELECT
+    borrowing_id,
+    DATEDIFF(return_date, borrow_date) AS borrowed_days
+FROM Borrowings
+WHERE return_date IS NOT NULL;
+
+SELECT
+    book_title,
+    available_copies,
+    IF(available_copies > 0, 'Available', 'Out of Stock')
+    AS availability
+FROM Books;

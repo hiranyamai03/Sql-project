@@ -1,0 +1,55 @@
+SELECT
+    b.book_title,
+    a.author_name
+FROM Books b
+INNER JOIN Authors a
+ON b.author_id = a.author_id;
+
+
+SELECT
+    b.book_id,
+    b.book_title
+FROM Books b
+LEFT JOIN Borrowings br
+ON b.book_id = br.book_id
+WHERE br.borrowing_id IS NULL;
+
+
+SELECT
+    book_title
+FROM Books
+WHERE book_id IN (
+    SELECT book_id
+    FROM Borrowings
+    WHERE member_id = (
+        SELECT member_id
+        FROM Members
+        WHERE member_name = 'Rahul Sharma'
+    )
+);
+
+
+SELECT
+    member_name
+FROM Members
+WHERE member_id IN (
+    SELECT br.member_id
+    FROM Borrowings br
+    JOIN Fines f
+    ON br.borrowing_id = f.borrowing_id
+    GROUP BY br.member_id
+    HAVING SUM(f.fine_amount) > 10
+);
+
+
+SELECT
+    b.book_title,
+    b.category,
+    b.price
+FROM Books b
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Books b2
+    WHERE b2.category = b.category
+    AND b2.price > b.price
+);
